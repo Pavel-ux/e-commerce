@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { commerce } from './lib/commerce'
-import { Products, Navbar, Cart, Checkout } from './components'
+import { Products, Navbar, Cart, Checkout, SignIn, About } from './components'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 const App = () => {
@@ -74,7 +74,7 @@ const App = () => {
             <div>
                 <Navbar isLoading={isLoading} totalItems={cart.total_items} />
                 <Routes>
-                    <Route exact path='/' element={<Products products={products} onAddToCart={handleAddToCart} />} />
+                    <Route exact index element={<Products products={products} onAddToCart={handleAddToCart} />} />
                     <Route
                         exact
                         path='/cart'
@@ -92,6 +92,8 @@ const App = () => {
                         path='/checkout'
                         element={<Checkout cart={cart} order={order} onCaptureCheckout={handleCaptureCheckout} error={errorMessage} />}
                     />
+                    <Route exact path='/signin' element={<SignIn />} />
+                    <Route exact path='/about' element={<About />} />
                 </Routes>
             </div>
         </Router>
